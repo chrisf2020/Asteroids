@@ -1,3 +1,8 @@
+# file: logger.py
+# description: logging utility for game state and events
+# author: sarah schulte
+
+
 import inspect
 import json
 import math
@@ -7,7 +12,7 @@ __all__ = ["log_state", "log_event"]
 
 _FPS = 60
 _MAX_SECONDS = 16
-_SPRITE_SAMPLE_LIMIT = 10  # Maximum number of sprites to log per group
+_SPRITE_SAMPLE_LIMIT = 10  # maximum number of sprites to log per group
 
 _frame_count = 0
 _state_log_initialized = False
@@ -18,11 +23,11 @@ _start_time = datetime.now()
 def log_state():
     global _frame_count, _state_log_initialized
 
-    # Stop logging after `_MAX_SECONDS` seconds
+    # stop logging after `_MAX_SECONDS` seconds
     if _frame_count > _FPS * _MAX_SECONDS:
         return
 
-    # Take a snapshot approx. once per second
+    # take a snapshot approx. once per second
     _frame_count += 1
     if _frame_count % _FPS != 0:
         return
