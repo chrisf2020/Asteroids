@@ -67,8 +67,8 @@ def main():
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                return
-            
+                sys.exit()
+                
             # handle menu inputs
             if event.type == pygame.KEYDOWN:
                 if not game_active:
@@ -104,7 +104,7 @@ def main():
                 objects.draw(screen)
             
             # draw live score
-            score_label = small_font.render(f"score: {score}", 1, (255, 255, 255))
+            score_label = small_font.render(f"Score: {score}", 1, (255, 255, 255))
             screen.blit(score_label, (10, 10))
 
         else:
