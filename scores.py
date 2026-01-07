@@ -15,6 +15,12 @@ def get_high_scores():
         return []
     
     with open(SCORE_FILE, "r") as f:
-        scores = [int(line.strip()) for line in f.readlines() if line.strip()]
+        scores = []
+        for line in f:
+            try:
+                score = int(line.strip())
+                scores.append(score)
+            except ValueError:
+                continue
         scores.sort(reverse=True)
         return scores[:5]  # only return the top 5
